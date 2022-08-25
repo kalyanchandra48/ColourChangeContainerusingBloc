@@ -14,8 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: BlocProvider(
-        create: (context) => ColourChangeBloc(),
+        create: (context) => ColourChangeBlocState(),
         child: const MyHomePage(),
       ),
     );
@@ -27,13 +28,18 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ColourChangeBloc, Color>(
+    return BlocBuilder<ColourChangeBlocState, Color>(
       builder: (context, state) {
         return Scaffold(
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(height: 100, width: 100, color: state),
+              Container(
+                height: 190,
+                width: 170,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(19), color: state),
+              ),
               const SizedBox(
                 height: 50,
               ),
@@ -44,22 +50,22 @@ class MyHomePage extends StatelessWidget {
                   TextButton(
                       onPressed: () {
                         context
-                            .read<ColourChangeBloc>()
-                            .add(YellowColourChange());
+                            .read<ColourChangeBlocState>()
+                            .add(YellowColourChangeEvent());
                       },
                       child: const Text('yellow')),
                   TextButton(
                       onPressed: () {
                         context
-                            .read<ColourChangeBloc>()
-                            .add((BlueColourChange()));
+                            .read<ColourChangeBlocState>()
+                            .add((BlueColourChangeEvent()));
                       },
                       child: const Text('blue')),
                   TextButton(
                       onPressed: () {
                         context
-                            .read<ColourChangeBloc>()
-                            .add((OrangeColourChange()));
+                            .read<ColourChangeBlocState>()
+                            .add((OrangeColourChangeEvent()));
                       },
                       child: const Text('orange'))
                 ],

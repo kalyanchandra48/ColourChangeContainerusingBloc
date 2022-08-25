@@ -1,7 +1,7 @@
 class ColourChange {}
 
-class YellowColourChange extends ColourChange {}
+class YellowColourChangeEvent extends ColourChange {}
 
-class BlueColourChange extends ColourChange {}
+class BlueColourChangeEvent extends ColourChange {}
 
-class OrangeColourChange extends ColourChange {}
+class OrangeColourChangeEvent extends ColourChange {}
